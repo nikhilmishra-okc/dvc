@@ -1,0 +1,4 @@
+outs:
+- md5: 86c2e39dec23dcf87095c29656e748e2
+  size: 7
+  path: something.txt
