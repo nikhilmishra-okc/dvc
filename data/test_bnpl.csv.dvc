@@ -1,0 +1,4 @@
+outs:
+- md5: b6b71de334240ffeb187dece0e93e270
+  size: 68461
+  path: test_bnpl.csv

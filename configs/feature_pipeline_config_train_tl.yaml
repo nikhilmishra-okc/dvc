@@ -1,0 +1,174 @@
+create_cohort: false
+sourcetables:
+  app_sess: mixpanel-prod-1.mixpanel_nessie_day_partitioned_1355125.mp_ae_session
+  txns: okcredit-de.okc_core.rds_core_transactions
+  accounts: okcredit-de.okc_core.rds_core_accounts_v2
+  category: okcredit-data-science.okc_category_prediction.category_pred_v2
+  location: okcredit-data-science.location_prediction.location_prediction
+basetables:
+  cohort: okcredit-data-science.nikhil.preapproval_model_cohort_train_tl
+  buyer_txns: okcredit-data-science.nikhil.buyer_txns_train_tl
+  seller_txns: okcredit-data-science.nikhil.seller_txns_train_tl
+featuretables:
+  behavior: okcredit-data-science.nikhil.behavior_feats_train_tl
+  seller_txns: okcredit-data-science.nikhil.seller_feats_train_tl
+  buyer_txns: okcredit-data-science.nikhil.buyer_feats_train_tl
+  app_sess: okcredit-data-science.nikhil.app-sess_feats_train_tl
+sink: okcredit-data-science.nikhil.preapproval_model_features_train_tl
+raw_data_lag: 365
+num_data_partitions: 50
+behavior_feat_vintage:
+- 7
+- 30
+- 45
+- 60
+- 90
+- 120
+- 150
+- 180
+- 365
+buyer_txn_feats:
+  vintage:
+  - 15
+  - 30
+  - 45
+  - 60
+  - 90
+  - 120
+  - 150
+  - 180
+  - 365
+  ratio_pairs:
+  - - 15
+    - 30
+  - - 30
+    - 45
+  - - 60
+    - 90
+  - - 90
+    - 120
+  - - 150
+    - 180
+  - - 180
+    - 365
+  columns:
+  - avg_amount_diff_60_to_90_days
+  - avg_amount_last_180_days
+  - avg_amount_last_60_days
+  - avg_amount_ratio_60_to_90_days
+  - avg_amount_ratio_90_to_120_days
+  - avg_num_transactions_per_account_id_last_45_days
+  - avg_transaction_amount_per_account_id_ratio_30_to_45_days
+  - max_amount_avg_15_to_30_days
+  - max_amount_ratio_15_to_30_days
+  - range_amount_avg_15_to_30_days
+  - std_amount_ratio_30_to_45_days
+  - total_amount_diff_180_to_365_days
+  - total_amount_ratio_15_to_30_days
+  - total_transactions_diff_150_to_180_days
+seller_txn_feats:
+  vintage:
+  - 3
+  - 7
+  - 15
+  - 30
+  - 45
+  - 60
+  - 90
+  - 120
+  - 150
+  - 180
+  - 365
+  ratio_pairs:
+  - - 3
+    - 7
+  - - 7
+    - 15
+  - - 15
+    - 30
+  - - 30
+    - 45
+  - - 60
+    - 90
+  - - 90
+    - 120
+  - - 120
+    - 150
+  - - 180
+    - 365
+  columns:
+  - avg_amount_diff_15_to_30_days
+  - avg_amount_diff_180_to_365_days
+  - avg_amount_last_15_days
+  - avg_amount_last_7_days
+  - avg_amount_ratio_15_to_30_days
+  - avg_amount_ratio_180_to_365_days
+  - avg_num_transactions_per_account_id_ratio_120_to_150_days
+  - avg_num_transactions_per_account_id_ratio_7_to_15_days
+  - avg_transaction_amount_per_account_id_avg_120_to_150_days
+  - avg_transaction_amount_per_account_id_diff_90_to_120_days
+  - avg_transaction_amount_per_account_id_last_150_days
+  - avg_transaction_amount_per_account_id_ratio_180_to_365_days
+  - max_amount_avg_15_to_30_days
+  - max_amount_last_150_days
+  - max_amount_last_15_days
+  - max_amount_last_365_days
+  - max_amount_last_7_days
+  - min_amount_diff_15_to_30_days
+  - min_amount_ratio_15_to_30_days
+  - range_amount_avg_15_to_30_days
+  - range_amount_avg_7_to_15_days
+  - range_amount_diff_180_to_365_days
+  - range_amount_last_15_days
+  - range_amount_ratio_180_to_365_days
+  - std_amount_diff_15_to_30_days
+  - std_amount_diff_180_to_365_days
+  - std_amount_ratio_180_to_365_days
+  - total_amount_avg_15_to_30_days
+  - total_amount_avg_180_to_365_days
+  - total_amount_avg_60_to_90_days
+  - total_amount_avg_7_to_15_days
+  - total_amount_last_15_days
+  - total_amount_last_45_days
+  - total_amount_last_90_days
+  - total_amount_ratio_180_to_365_days
+  - total_amount_ratio_90_to_120_days
+  - unique_account_ids_last_30_days
+  - unique_account_ids_ratio_120_to_150_days
+  - unique_account_ids_ratio_3_to_7_days
+app_sess_fts:
+  vintage:
+  - 3
+  - 7
+  - 15
+  - 30
+  - 45
+  - 60
+  - 90
+  ratio_pairs:
+  - - 3
+    - 7
+  - - 7
+    - 30
+  - - 7
+    - 90
+  - - 15
+    - 60
+  - - 30
+    - 90
+  - - 15
+    - 90
+  columns:
+  - total_sessions_diff_15_to_60_days
+  - total_sessions_diff_30_to_90_days
+  - total_sessions_diff_3_to_7_days
+  - total_sessions_diff_7_to_30_days
+  - total_sessions_diff_7_to_90_days
+  - total_sessions_last_15_days
+  - total_sessions_last_30_days
+  - total_sessions_last_3_days
+  - total_sessions_last_45_days
+  - total_sessions_last_60_days
+  - total_sessions_last_7_days
+  - total_sessions_last_90_days
+  - total_sessions_ratio_3_to_7_days

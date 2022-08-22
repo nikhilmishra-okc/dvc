@@ -1,0 +1,3 @@
+filename.gollo \n filees.golo.txt
+filename.gollo 
+ filees.golo.txt

@@ -1,0 +1,17 @@
+ver: 'v1_1'
+
+data_path:
+  local: ./data/
+  gcs:
+    project: 'okcredit-data-science'
+    bucket_name: 'okc_underwriting'
+    input_data: 'model_retraining_pipeline/v1_1/input_data/'
+    features: 'model_retraining_pipeline/v1_1/features/'
+
+config_path: ./configs/
+
+create_features_for_files:
+  - train_tl
+  - train_bnpl
+  - test_bnpl
+  - test_tl

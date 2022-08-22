@@ -1,0 +1,4 @@
+outs:
+- md5: 48f644f49fd36cce1fc002de1c8c7527
+  size: 1841086
+  path: test_bnpl_fts.csv
